@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3150/protozero
+    username: root
+    password: dongha0928
+
+  servlet:
+    multipart:
+      max-file-size: 5TB
+      max-request-size: 15TB
+
+mybatis:
+  mapper-locations: mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger.html
+
+server:
+  port: 8089
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "jpa"
+  datasource:
+    url: jdbc:mariadb://localhost:3150/protozero
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod2"
+
